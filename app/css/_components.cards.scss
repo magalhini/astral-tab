@@ -1,0 +1,186 @@
+.cards {
+    @include wrapper();
+    width: 100%;
+}
+
+.cards__card {
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.2);
+    border: 1px solid rgba(255,255,255, .2);
+    width: 25em;
+    max-width: 15em;
+    max-height: 23em;
+    margin-right: 2%;
+    padding: 1em 2em;
+    border-radius: 1.5em;
+    position: relative;
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 1.5em;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.2);
+        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    &:hover {
+        transform: translateY(-.5em);
+    }
+
+    &:hover:after {
+        opacity: 1;
+    }
+}
+
+/**
+ * Main colors for each card.
+ */
+.cards__card--dawn {
+     background: $day--card__color1;
+}
+
+.cards__card--sunrise {
+    background: $day--card__color2;
+}
+
+.cards__card--sunset {
+    background: $day--card__color3;
+}
+
+.cards__card--dusk {
+    background: $day--card__color4;
+}
+
+/**
+ * Generic position and styling for typography on
+ * every single card.
+ */
+
+.card__hours {
+    font-family: $font-stack--secondary;
+    font-size: 3em;
+}
+
+.card__cover {
+    width: 100%;
+    border-radius: 0 0 12% 12%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    left: 0;
+}
+
+.card__name,
+.card__timeago {
+    font-family: $font-stack--primary;
+    position: relative;
+    z-index: 1;
+}
+
+.card__name {
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1em;
+    letter-spacing: 1px;
+    padding-bottom: .5em;
+}
+
+.card__timeago {
+    font-style: italic;
+    font-family: Georgia;
+    margin: .5em 0;
+}
+
+.card__sun {
+    width: 6.5em;
+    height: 6.5em;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+/**
+ * Specific colors for the covers, as well as colors and animations
+ * for their suns.
+ */
+
+///////////////////////////////
+////////// Dawn Card //////////
+///////////////////////////////
+.card__cover--dawn {
+    background: linear-gradient(to bottom, lighten($day--card__color1, 5%) 0%, $day--card__color1 100%);
+    box-shadow: 0 -1px rgb(255, 171, 179);
+}
+
+.cards__card--dawn .card__sun {
+    @include addAnimation(animateDawn, forwards);
+
+    box-shadow: 0 0 40px 10px rgba(255, 208, 108, 0.7);
+    background: #FCB594;
+    transform: translateY(20%);
+}
+
+///////////////////////////////
+//////// Sunrise Card /////////
+///////////////////////////////
+.cards__card--sunrise {
+    .card__sun {
+        @include addAnimation(animateSunrise);
+
+        box-shadow: 0 0 0px 10px rgba(255,255,255,.1);
+        background: #FCB594;
+        transform: translateY(0%);
+    }
+}
+
+.card__cover--sunrise {
+    background: linear-gradient(to bottom, lighten($day--card__color2, 5%) 0%, $day--card__color2 100%);
+    box-shadow: 0 -1px lighten($day--card__color2, 20%);
+}
+
+///////////////////////////////
+///////// Sunset Card /////////
+///////////////////////////////
+.cards__card--sunset {
+    .card__sun {
+        @include addAnimation(animateSunset, forwards);
+
+        box-shadow: 0 0 0px 10px rgba(10, 10, 10, .1);
+        background: #C56B42;
+        transform: translateY(0%);
+    }
+}
+
+.card__cover--sunset {
+    background: linear-gradient(to bottom, lighten($day--card__color3, 5%) 0%, $day--card__color3 100%);
+    box-shadow: 0 -1px lighten($day--card__color3, 20%);
+}
+
+///////////////////////////////
+////////// Dusk Card //////////
+///////////////////////////////
+.cards__card--dusk {
+    .card__sun {
+        @include addAnimation(animateDusk, forwards);
+
+        box-shadow: 0 0 180px 30px rgb(113, 85, 137);
+        background: #BEB8B5;
+        transform: translateY(30%);
+    }
+}
+
+.card__cover--dusk {
+    background: linear-gradient(to bottom, lighten($day--card__color4, 5) 0%, $day--card__color4 100%);
+    box-shadow: 0 -1px lighten($day--card__color4, 20%);
+}

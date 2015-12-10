@@ -1,0 +1,13 @@
+@mixin addAnimation($name, $fillMode:forwards) {
+    animation-name: $name;
+    animation-duration: 6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: $fillMode;
+}
+
+@mixin wrapper() {
+    max-width: $max-content-width;
+    margin-left: auto;
+    margin-right: auto;
+}

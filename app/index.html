@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <title><%= appname %></title>
+
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css css/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css css/main.css -->
+    <link rel="stylesheet" href="css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="app">
+        <div class="background">
+            <div class="clouds moveClouds"></div>
+        </div>
+        <section class="content">
+
+            <section class="details">
+                <h2 class="details__current-time"></h2>
+                <h3 class="details__current-day"></h3>
+                <h4 class="details__current-city">...</h4>
+            </section>
+            <section class="controls">
+                <button>Tomorrow</button>
+            </section>
+
+            <div class="cards">
+                <div class="cards__card cards__card--dawn vanishIn">
+                    <p class="card__hours">...</p>
+                    <div class="card__cover card__cover--dawn">
+                    </div>
+                    <div class="card__sun"></div>
+                    <div class="card__name">Dawn</div>
+                    <div class="card__timeago"></div>
+
+                </div>
+                <div class="cards__card cards__card--sunrise vanishIn">
+                    <p class="card__hours">...</p>
+                    <div class="card__cover card__cover--sunrise">
+                    </div>
+                    <div class="card__sun"></div>
+                    <div class="card__name">Sunrise</div>
+                    <div class="card__timeago"></div>
+                </div>
+                <div class="cards__card cards__card--sunset vanishIn">
+                    <p class="card__hours">...</p>
+                    <div class="card__cover card__cover--sunset">
+                    </div>
+                    <div class="card__sun"></div>
+                    <div class="card__name">Sunset</div>
+                    <div class="card__timeago"></div>
+                </div>
+                <div class="cards__card cards__card--dusk vanishIn">
+                    <p class="card__hours">...</p>
+                    <div class="card__cover card__cover--dusk">
+                    </div>
+                    <div class="card__sun"></div>
+                    <div class="card__name">Dusk</div>
+                    <div class="card__timeago"></div>
+                </div>
+            </div>
+
+            <section class="moon-section">
+                <p class="moon-description">The moon tonight will be</p>
+                <p id="moon-phase" class="moon-phase"></p>
+            </section>
+        </section>
+    </div>
+
+    <!--<section class="time-display">
+        <div class="shadow" style="width: 50%; margin: 50% auto; position: absolute;"></div>
+        <svg viewBox="0 0 300 300">
+          <filter id="dropshadow" height="150%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+          <feOffset dx="0" dy="0" result="offsetblur"/>
+                <feComponentTransfer xmlns="http://www.w3.org/2000/svg">
+                <feFuncA type="linear" slope="0.31"/>
+              </feComponentTransfer>
+              <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <circle class="c4" cx="150" cy="150" fill="#462233" r="0"></circle>
+            <rect id="dusk-line" height="246" width="1" x="220" fill="#462233"/>
+            <circle class="c0" cx="150" cy="150" fill="#903338" r="0"></circle>
+            <rect id="sunset-line" height="246" width="1" x="170" fill="#903338"/>
+            <circle class="c3" cx="150" cy="150" fill="#C64C45" r="0"></circle>
+            <circle fill="#FA9D71" class="c2" cx="150" cy="150"  r="0"></circle>
+            <circle class="c1" cx="150" cy="150" fill="#173B44" r="0"></circle>
+        </svg>
+    </section>-->
+
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <script src="https://use.typekit.net/ewt6saw.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+    <!-- build:js js/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js js/main.js -->
+    <script src="js/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

@@ -1,0 +1,6 @@
+.controls {
+    @include wrapper();
+    
+    position: relative;
+    z-index: 2;
+}
