@@ -3,6 +3,7 @@
 
 @import 'settings.variables';
 @import 'settings.fonts';
+@import 'settings.zindexes';
 
 @import 'base.main';
 @import 'base.typography';
@@ -13,6 +14,7 @@
 @import 'resources.animations';
 
 @import 'components.details';
+@import 'components.overlays';
 @import 'components.controls';
 @import 'components.cards';
 @import 'components.time-display';

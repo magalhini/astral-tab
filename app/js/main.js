@@ -8,10 +8,11 @@ import SunCalcHelper from './SunCalcHelper';
 import TimeFormatter from './TimeFormatter';
 import moment from 'moment';
 import Elements from './config/Elements';
+import Overlays from './components/overlays';
 
 import MoonCalc from './MoonCalc.js';
 
-let rightNow = new Date();       // Today!
+let rightNow = new Date();   // Today!
 let computedTimes = null;    // Calculated times based on position
 let userPosition = null;     // User's coordinate
 let currentCity;             // Geolocated user's city
@@ -34,9 +35,8 @@ function setHours() {
 }
 
 function setMoonPhase(date = new Date()) {
-    console.log(date);
     let moonphaseValue = SunCalcHelper.getMoonLumen(SunCalc, date).phase;
-    console.log(moonphaseValue);
+
     Elements.moonPhaseName.innerHTML = MoonCalc.getPhase(moonphaseValue);
     Elements.moonPhaseWrapper.classList.add('is-visible');
 }
@@ -47,6 +47,9 @@ function updateCurrentMoment(date = undefined) {
 }
 
 function initialize() {
+    document.getElementById('location-overlay').addEventListener('click', (e) => {
+        e.currentTarget.classList.add('is-closed');
+    });
     Geocoding.initialize();
     Geocoding.setPosition(getTimes);
 

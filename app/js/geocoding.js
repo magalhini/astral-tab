@@ -11,16 +11,19 @@ const Geocoding = {
         }
     },
 
-    getUserDetails(position, callback) {
+    getUserDetails(position, callback, error) {
         let {coords} = position;
+        let city;
         let place = new google.maps.LatLng(coords.latitude, coords.longitude);
 
         this.geoCoder.geocode({
             'latLng': place
         }, (res, status) => {
             if (status === google.maps.GeocoderStatus.OK) {
-                this._city = this.findCity(res);
-                callback(this._city);
+                city = this.findCity(res);
+                callback(city);
+            } else {
+                callback(error);
             }
         });
     },
@@ -29,7 +32,7 @@ const Geocoding = {
         return data.map(function(o) {
             return o;
         }).filter((a) => {
-            return a.types.indexOf('administrative_area_level_1') > -1;
+            return a.types.indexOf('locality') > -1;
         }).map((c) => {
             return c.formatted_address;
         }).reduce((city) => {

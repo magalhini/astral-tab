@@ -24,14 +24,21 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div id="app">
+    <main id="app">
+
         <div class="background">
             <div class="clouds moveClouds"></div>
         </div>
+
+        <div class="location-overlay" id="location-overlay">
+            <span class="location-overlay__message">Please allow location access in your browser</span>
+        </div>
+
         <section class="content">
 
             <section class="details">
                 <h2 class="details__current-time"></h2>
+                <span><svg class="details__icon-clock"><use xlink:href="images/svg/symbol-defs.svg#icon-clock"></use></svg><span class="mls"></span></span>
                 <h3 class="details__current-day"></h3>
                 <h4 class="details__current-city">...</h4>
             </section>
@@ -80,7 +87,7 @@
                 <p id="moon-phase" class="moon-phase"></p>
             </section>
         </section>
-    </div>
+    </main>
 
     <!--<section class="time-display">
         <div class="shadow" style="width: 50%; margin: 50% auto; position: absolute;"></div>
@@ -106,7 +113,7 @@
         </svg>
     </section>-->
 
-
+    <script src="vendor/svgxuse.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

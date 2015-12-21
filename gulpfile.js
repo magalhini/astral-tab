@@ -13,7 +13,7 @@ var reload = browserSync.reload;
 var through2 = require('through2');
 var browserify = require('browserify');
 
-gulp.task('stylesheet', ['sprites'], function () {
+gulp.task('stylesheet', function () {
   var processors = [autoprefixer({
       browsers: 'last 1 version'
   })];
@@ -36,32 +36,6 @@ gulp.task('stylesheet', ['sprites'], function () {
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/css'))
     .pipe(reload({stream: true}));
-});
-
-gulp.task('sprites', function() {
-  var spritesPath = 'app/images/sprites';
-  var identifiers = fs.readdirSync(spritesPath).filter(function(spritePath) {
-    var stat = fs.statSync(spritesPath + '/' + spritePath);
-    return stat.isDirectory();
-  });
-
-  for (var i = 0; i < identifiers.length; i++) {
-    var spriteData = gulp.src(spritesPath + '/' + identifiers[i] + '/*.png').pipe($.spritesmith({
-      imgName: 'sprite_' + identifiers[i] + '.png',
-      cssName: identifiers[i] + '.scss',
-      imgPath: '../images/sprite_' + identifiers[i] + '.png',
-      cssFormat: 'sass'
-    }));
-
-    // Pipe image stream
-    spriteData.img
-      .pipe(gulp.dest('.tmp/images'))
-      .pipe(gulp.dest('dist/images'))
-
-    // Pipe CSS stream
-    spriteData.css
-      .pipe(gulp.dest('app/css/sprites'));
-  }
 });
 
 gulp.task('javascript', function () {
@@ -157,7 +131,7 @@ gulp.task('serve', ['stylesheet', 'javascript', 'fonts'], function () {
     '.tmp/fonts/**/*'
   ]).on('change', reload);
 
-  gulp.watch(['app/css/**/*.scss', '!app/css/sprites/*.scss'], ['stylesheet']);
+  gulp.watch(['app/css/**/*.scss'], ['stylesheet']);
   gulp.watch('app/js/**/*.js', ['javascript']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);

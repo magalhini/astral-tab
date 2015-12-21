@@ -1,0 +1,17 @@
+.location-overlay {
+    @include overlay();
+
+    &.is-closed {
+        opacity: 0;
+        animation-name: sdf
+    }
+}
+
+.location-overlay__message {
+    text-align: center;
+    transform: translateY(50%);
+    position: relative;
+    margin-top: 20%;
+    font-size: 2.3em;
+    display: block;
+}

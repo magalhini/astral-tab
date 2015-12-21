@@ -1,13 +1,13 @@
 @keyframes animateDawn {
 	0% {
-		box-shadow: 0 0 0px 10px rgba(255, 248, 248, 0.2),
-					0 0 0px 20px rgba(255, 248, 248, 0.1);
+		box-shadow: 0 0 0 10px rgba(255, 248, 248, 0.2),
+					0 0 0 20px rgba(255, 248, 248, 0.1);
 		transform: translateY(35%);
 	}
 
 	100% {
-		box-shadow: 0 0 0px 30px rgba(255, 248, 248, 0.2),
-					0 0 0px 50px rgba(255, 248, 248, 0.1);
+		box-shadow: 0 0 0 30px rgba(255, 248, 248, 0.2),
+					0 0 0 50px rgba(255, 248, 248, 0.1);
 		transform: translateY(30%);
 	}
 }
@@ -15,7 +15,7 @@
 @keyframes animateSunrise {
 	0% {
 		opacity: .1;
-		transform: translateY(30%)
+		transform: translateY(20%)
 	}
 
 	50% {
@@ -25,7 +25,7 @@
 	100% {
 		opacity: 1;
 		box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.1);
-		transform: translateY(0%);
+		transform: translateY(-10%);
 	}
 }
 
@@ -37,8 +37,8 @@
 
 	100% {
 		opacity: 1;
-		box-shadow: 0 0 0px 10px rgba(255, 255, 255, 0.1);
-		transform: translateY(25%);
+		box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1);
+		transform: translateY(15%);
 	}
 }
 
@@ -87,6 +87,19 @@
 	animation-timing-function: ease-in;
 }
 
+.fadeOutThenHide {}
+
+
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
 @keyframes vanishIn {
 	0% {
 		opacity:0;
@@ -117,24 +130,6 @@
 	}
 	100% {
 		transform: scale(1);
-		opacity: 1;
-	}
-}
-
-@-webkit-keyframes fadeIn {
-	0% {
-		-webkit-transform: scale(0);
-		opacity: 0.0;
-	}
-	60% {
-		-webkit-transform: scale(1.1);
-	}
-	80% {
-		-webkit-transform: scale(0.9);
-		opacity: 1;
-	}
-	100% {
-		-webkit-transform: scale(1);
 		opacity: 1;
 	}
 }
