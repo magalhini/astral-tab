@@ -1,6 +1,6 @@
 @mixin addAnimation($name, $fillMode:forwards) {
     animation-name: $name;
-    animation-duration: 6s;
+    animation-duration: 8s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: 1;
     animation-fill-mode: $fillMode;

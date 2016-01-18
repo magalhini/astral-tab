@@ -4,7 +4,9 @@
 let overlayEl = document.getElementById('location-overlay');
 
 const Overlays = {
-    open: () => {},
+    open: () => {
+        overlayEl.classList.remove('is-closed');
+    },
     close: () => {
         overlayEl.classList.add('is-closed');
     }

@@ -3,7 +3,8 @@
 
     &.is-closed {
         opacity: 0;
-        animation-name: sdf
+        animation-name: sdf;
+        display: none;
     }
 }
 

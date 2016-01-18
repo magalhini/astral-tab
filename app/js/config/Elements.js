@@ -5,7 +5,8 @@ export default {
     sunset: document.querySelector('.cards__card--sunset .card__hours'),
     dusk: document.querySelector('.cards__card--dusk .card__hours'),
     moon: document.querySelector('.moon'),
-    addDay: document.querySelector('button'),
+    decreaseDay: document.querySelectorAll('#controls__previous-day')[0],
+    increaseDay: document.querySelectorAll('#controls__next-day')[0],
     cityName: document.querySelector('.details__current-city'),
 
     currentTime: document.querySelector('.details__current-time'),

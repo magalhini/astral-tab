@@ -12,5 +12,6 @@ export default {
     getMoonPosition: (sunCalc, position) => sunCalc.getMoonPosition(new Date(), position.latitude, position.latitude),
     getMoonLumen: (sunCalc, date) => sunCalc.getMoonIllumination(date),
 
-    addDays: (date, days) => new Date(date.setDate(date.getDate() + days))
+    addDays: (date, days) => new Date(date.setDate(date.getDate() + days)),
+    removeDays: (date, days) => new Date(date.setDate(date.getDate() - days))
 };

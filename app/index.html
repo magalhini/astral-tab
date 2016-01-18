@@ -25,13 +25,12 @@
     <![endif]-->
 
     <main id="app">
-
         <div class="background">
             <div class="clouds moveClouds"></div>
         </div>
 
         <div class="location-overlay" id="location-overlay">
-            <span class="location-overlay__message">Please allow location access in your browser</span>
+            <span class="location-overlay__message">Fetching your where abouts...</span>
         </div>
 
         <section class="content">
@@ -39,11 +38,14 @@
             <section class="details">
                 <h2 class="details__current-time"></h2>
                 <span><svg class="details__icon-clock"><use xlink:href="images/svg/symbol-defs.svg#icon-clock"></use></svg><span class="mls"></span></span>
-                <h3 class="details__current-day"></h3>
+                <section class="controls">
+                    <button class="controls-button" id="controls__previous-day"><</button>
+                    <h3 class="details__current-day"></h3>
+                    <button class="controls-button" id="controls__next-day">></button>
+                </section>
+
                 <h4 class="details__current-city">...</h4>
-            </section>
-            <section class="controls">
-                <button>Tomorrow</button>
+                <span><svg class="details__icon-map"><use xlink:href="images/svg/symbol-defs.svg#icon-map"></use></svg><span class="mls"></span></span></svg></span>
             </section>
 
             <div class="cards">
@@ -83,8 +85,14 @@
             </div>
 
             <section class="moon-section">
-                <p class="moon-description">The moon tonight will be</p>
-                <p id="moon-phase" class="moon-phase"></p>
+                <div class="moon-section__col">
+                    <div class="moon-disc"></div>
+                </div>
+                <div class="moon-section__col">
+                    <p class="moon-description">The moon is a</p>
+                    <p id="moon-phase" class="moon-phase"></p>
+                </div>
+
             </section>
         </section>
     </main>

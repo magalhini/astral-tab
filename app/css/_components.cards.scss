@@ -69,6 +69,7 @@
 .card__hours {
     font-family: $font-stack--secondary;
     font-size: 3em;
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .card__cover {
@@ -124,7 +125,9 @@
 }
 
 .cards__card--dawn .card__sun {
-    @include addAnimation(animateDawn, forwards);
+    .is-ready & {
+        @include addAnimation(animateDawn, forwards);
+    }
 
     box-shadow: 0 0 40px 10px rgba(255, 208, 108, 0.7);
     background: #FCB594;
@@ -134,14 +137,14 @@
 ///////////////////////////////
 //////// Sunrise Card /////////
 ///////////////////////////////
-.cards__card--sunrise {
-    .card__sun {
+.cards__card--sunrise .card__sun {
+    .is-ready & {
         @include addAnimation(animateSunrise);
-
-        box-shadow: 0 0 0px 10px rgba(255,255,255,.1);
-        background: #FCB594;
-        transform: translateY(0%);
     }
+
+    box-shadow: 0 0 0px 10px rgba(255,255,255,.1);
+    background: #FCB594;
+    transform: translateY(0%);
 }
 
 .card__cover--sunrise {
@@ -152,14 +155,14 @@
 ///////////////////////////////
 ///////// Sunset Card /////////
 ///////////////////////////////
-.cards__card--sunset {
-    .card__sun {
+.cards__card--sunset .card__sun {
+    .is-ready & {
         @include addAnimation(animateSunset, forwards);
-
-        box-shadow: 0 0 0px 10px rgba(10, 10, 10, .1);
-        background: #C56B42;
-        transform: translateY(0%);
     }
+
+    box-shadow: 0 0 0px 10px rgba(10, 10, 10, .1);
+    background: #C56B42;
+    transform: translateY(0%);
 }
 
 .card__cover--sunset {
@@ -170,14 +173,14 @@
 ///////////////////////////////
 ////////// Dusk Card //////////
 ///////////////////////////////
-.cards__card--dusk {
-    .card__sun {
+.cards__card--dusk .card__sun {
+    .is-ready & {
         @include addAnimation(animateDusk, forwards);
-
-        box-shadow: 0 0 180px 30px rgb(113, 85, 137);
-        background: #BEB8B5;
-        transform: translateY(30%);
     }
+
+    box-shadow: 0 0 180px 30px rgb(113, 85, 137);
+    background: #BEB8B5;
+    transform: translateY(30%);
 }
 
 .card__cover--dusk {

@@ -1,6 +1,33 @@
 .controls {
     @include wrapper();
-    
+
     position: relative;
     z-index: 2;
+}
+
+.controls-button {
+    background: rgba(255,255,255,.1);
+    cursor: pointer;
+    float: left;
+    border: none;
+    border-radius: 4px;
+    padding: .3rem;
+    color: white;
+    font-size: 1rem;
+
+    &.is-disabled {
+        opacity: .2;
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, .3);
+    }
+
+    &:nth-child(1) {
+        margin-right: 1em;
+    }
+
+    &:nth-child(2) {
+        margin-left: 1em;
+    }
 }

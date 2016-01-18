@@ -7,8 +7,12 @@ const Geocoding = {
 
     setPosition(cb) {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(cb, this.failurePosition);
+            navigator.geolocation.getCurrentPosition(cb, this.failed);
         }
+    },
+
+    failed(err) {
+        console.log(err, 'Failed to get user location');
     },
 
     getUserDetails(position, callback, error) {
@@ -26,6 +30,8 @@ const Geocoding = {
                 callback(error);
             }
         });
+
+        return city;
     },
 
     findCity(data) {
