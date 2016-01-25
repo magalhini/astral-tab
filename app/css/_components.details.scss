@@ -4,7 +4,13 @@
     width: 100%;
     position: relative;
     z-index: 1;
-    margin-bottom: 2em;
+    overflow: hidden;
+    margin-bottom: 3em;
+
+    @media screen and (max-width: 750px) {
+        text-align: center;
+        overflow: visible;
+    }
 }
 
 .details__icon-clock {
@@ -23,14 +29,20 @@
     margin: 1em 0 0;
     font-weight: bold;
     letter-spacing: 1px;
+
+    @media screen and (max-width: 750px) {
+        font-size: 3rem;
+        margin: .5em 0 0;
+    }
 }
 
 .details__current-day {
     font-family: $font-stack--secondary;
     font-size: 1.21em;
     font-weight: 600;
-    margin: .4em 0 0;
+    margin: .1em 0 0;
     color: #f7f7f7;
+    float: left;
 }
 
 .details__current-city {
@@ -41,6 +53,14 @@
     top: 4em;
     right: 2em;
     margin: 0;
+
+    @media screen and (max-width: 750px) {
+        position: relative;
+        top: 2em;
+        opacity: .4;
+        clear: both;
+        right: 0;
+    }
 }
 
 .details__icon-map {

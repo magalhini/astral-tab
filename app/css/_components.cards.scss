@@ -61,6 +61,8 @@
     background: $day--card__color4;
 }
 
+
+
 /**
  * Generic position and styling for typography on
  * every single card.
@@ -186,4 +188,48 @@
 .card__cover--dusk {
     background: linear-gradient(to bottom, lighten($day--card__color4, 5) 0%, $day--card__color4 100%);
     box-shadow: 0 -1px lighten($day--card__color4, 20%);
+}
+
+/////////////////////////
+
+@media screen and (max-width: 750px) {
+    .cards__card {
+        height: 6em;
+        background: transparent;
+        width: auto;
+        max-width: none;
+        box-shadow: none;
+        border: none;
+        margin-right: 0;
+
+        &:hover:after { content: none; }
+    }
+
+    .card__cover {
+        display: none;
+    }
+
+    .card__hours {
+        font-size: 2.5rem;
+        float: right;
+    }
+
+    .card__sun {
+        display: none;
+    }
+
+    .card__name {
+        font-size: 1.5rem;
+        float: left;
+        border: none;
+        font-weight: 200;
+        text-align: center;
+        top: .5rem;
+    }
+
+    .card__timeago {
+        clear: both;
+        top: -4rem;
+        text-align: left;
+    }
 }
