@@ -4,7 +4,7 @@
     width: 100%;
     position: relative;
     z-index: 1;
-    overflow: hidden;
+    height: 7em;
     margin-bottom: 3em;
 
     @media screen and (max-width: 750px) {
@@ -36,15 +36,6 @@
     }
 }
 
-.details__current-day {
-    font-family: $font-stack--secondary;
-    font-size: 1.21em;
-    font-weight: 600;
-    margin: .1em 0 0;
-    color: #f7f7f7;
-    float: left;
-}
-
 .details__current-city {
     font-family: $font-stack--secondary;
     font-weight: bold;
@@ -69,6 +60,10 @@
     position: absolute;
     right: 0;
     top: 0;
+
+    @include respond-to("medium") {
+        display: none;
+    }
 }
 
 .moon-section {

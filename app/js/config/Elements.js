@@ -10,7 +10,7 @@ export default {
     cityName: document.querySelector('.details__current-city'),
 
     currentTime: document.querySelector('.details__current-time'),
-    currentDay: document.querySelector('.details__current-day'),
+    currentDay: document.querySelector('.controls__current-day'),
 
     dawnTimeago: document.querySelector('.cards__card--dawn .card__timeago'),
     sunriseTimeago: document.querySelector('.cards__card--sunrise .card__timeago'),

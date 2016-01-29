@@ -24,3 +24,17 @@
     transition: opacity .3s ease-in-out 0s;
     z-index: $z-index--overlays;
 }
+
+@mixin respond-to($media) {
+    @if $media == large {
+        @media only screen and (max-width: $breakpoint--large) { @content; }
+    }
+
+    @else if $media == medium {
+        @media only screen and (max-width: $breakpoint--medium) { @content; }
+    }
+
+    @else if $media == small {
+        @media only screen and (max-width: $breakpoint--small) { @content; }
+    }
+}

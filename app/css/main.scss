@@ -5,11 +5,11 @@
 @import 'settings.fonts';
 @import 'settings.zindexes';
 
+@import 'helpers.mixins';
+
 @import 'base.main';
 @import 'base.typography';
 @import 'base.backgrounds';
-
-@import 'helpers.mixins';
 
 @import 'resources.animations';
 
