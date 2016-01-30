@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "Astral Tab",
+  "description": "Displays sunrise and sunset times, as well as moon phases.",
+  "version": "1.0",
+  "chrome_url_overrides" : {
+    "newtab": "dist/index.html"
+  },
+
+  "content_security_policy": "script-src 'self' https://maps.googleapis.com https://use.typekit.net; object-src 'self'",
+
+  "browser_action": {
+   "default_icon": "icon.png"
+  },
+  "permissions": [
+      "geolocation",
+      "*://use.typekit.net/*",
+      "*://maps.googleapis.com/*",
+      "*://maps.google.com/*",
+      "management",
+      "webRequest",
+      "webRequestBlocking"
+   ]
+}
