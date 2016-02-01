@@ -11,6 +11,7 @@
     height: 22em;
     margin-right: 2%;
     padding: 1em 2em;
+    overflow: hidden;
     border-radius: 1.5em;
     position: relative;
     text-align: center;
@@ -77,9 +78,9 @@
 .card__cover {
     width: 100%;
     border-radius: 0 0 12% 12%;
-    height: 50%;
+    height: 39%;
     position: absolute;
-    top: 50%;
+    top: 60%;
     z-index: 1;
     left: 0;
 }
@@ -92,17 +93,19 @@
 }
 
 .card__name {
-    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    //border-bottom: 1px solid rgba(255, 255, 255, .2);
     font-weight: 600;
     text-transform: uppercase;
     font-size: 1em;
     letter-spacing: 1px;
     padding-bottom: .5em;
+    position: relative;
+    top: .5rem;
 }
 
 .card__timeago {
     font-style: italic;
-    font-family: Georgia;
+    font-family: Georgia, sans-serif;
     margin: .5em 0;
 }
 

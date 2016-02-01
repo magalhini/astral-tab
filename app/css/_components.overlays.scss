@@ -1,6 +1,5 @@
 .location-overlay {
-    @include overlay();
-
+    display: none;
     &.is-closed {
         opacity: 0;
         animation-name: sdf;

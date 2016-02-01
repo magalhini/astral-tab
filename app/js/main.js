@@ -28,7 +28,6 @@ function setHours() {
     Elements.sunsetTimeago.innerHTML = TimeFormatter.timeAgo(computedTimes.sunset);
     Elements.duskTimeago.innerHTML = TimeFormatter.timeAgo(computedTimes.dusk);
 
-    document.getElementById('location-overlay').classList.add('is-closed');
     document.body.classList.add('is-ready');
 }
 
@@ -41,7 +40,7 @@ function setMoonPhase(date = new Date()) {
 
 function updateCurrentMoment(date = undefined) {
     Elements.currentDay.innerHTML = moment(date).format('dddd, MMMM Do');
-    Elements.currentTime.innerHTML = moment().format('h:mm');
+    Elements.currentTime.innerHTML = moment().format('h:mm:ss');
 }
 
 function initialize() {
@@ -49,7 +48,7 @@ function initialize() {
     Geocoding.setPosition(getTimes);
 
     updateCurrentMoment();
-    setInterval(updateCurrentMoment, 50000);
+    setInterval(updateCurrentMoment, 1000);
 
     Elements.increaseDay.addEventListener('click', nextDay);
 }
