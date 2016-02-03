@@ -8,6 +8,10 @@
     "newtab": "dist/index.html"
   },
 
+  "background": {
+      "scripts": ["background.js"]
+  },
+
   "content_security_policy": "script-src 'self' https://maps.googleapis.com https://use.typekit.net; object-src 'self'",
 
   "browser_action": {

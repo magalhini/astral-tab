@@ -1,0 +1,28 @@
+<svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-gibbous-moon" viewBox="0 0 1024 1024">
+<title>gibbous-moon</title>
+<path class="path1" d="M512 384c70.692 0 128 57.308 128 128s-57.308 128-128 128c-35.346 0-64-57.308-64-128s28.654-128 64-128v0zM512 704c106.039 0 192-85.961 192-192s-85.961-192-192-192c-106.039 0-192 85.961-192 192s85.961 192 192 192v0z"></path>
+</symbol>
+<symbol id="icon-gibbous-moon2" viewBox="0 0 1024 1024">
+<title>gibbous-moon2</title>
+<path class="path1" d="M512 384v0c35.346 0 64 57.308 64 128s-28.654 128-64 128c-70.692 0-128-57.308-128-128s57.308-128 128-128zM512 704c106.039 0 192-85.961 192-192s-85.961-192-192-192c-106.039 0-192 85.961-192 192s85.961 192 192 192v0z"></path>
+</symbol>
+<symbol id="icon-half-moon" viewBox="0 0 1024 1024">
+<title>half-moon</title>
+<path class="path1" d="M512 704v0c-106.039 0-192-85.961-192-192s85.961-192 192-192c106.039 0 192 85.961 192 192s-85.961 192-192 192zM640 512c0-70.692-57.308-128-128-128v256c70.692 0 128-57.308 128-128v0z"></path>
+</symbol>
+<symbol id="icon-half-moon2" viewBox="0 0 1024 1024">
+<title>half-moon2</title>
+<path class="path1" d="M512 704c106.039 0 192-85.961 192-192s-85.961-192-192-192c-106.039 0-192 85.961-192 192s85.961 192 192 192v0zM384 512c0-70.692 57.308-128 128-128v256c-70.692 0-128-57.308-128-128v0z"></path>
+</symbol>
+<symbol id="icon-full-moon" viewBox="0 0 1024 1024">
+<title>full-moon</title>
+<path class="path1" d="M512 704c106.039 0 192-85.961 192-192s-85.961-192-192-192c-106.039 0-192 85.961-192 192s85.961 192 192 192v0z"></path>
+</symbol>
+<symbol id="icon-moon" viewBox="0 0 1024 1024">
+<title>moon</title>
+<path class="path1" d="M512 704v0c-106.039 0-192-85.961-192-192s85.961-192 192-192c106.039 0 192 85.961 192 192s-85.961 192-192 192zM512 640c70.692 0 128-57.308 128-128s-57.308-128-128-128c-70.692 0-128 57.308-128 128s57.308 128 128 128v0z"></path>
+</symbol>
+</defs>
+</svg>

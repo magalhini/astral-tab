@@ -40,6 +40,9 @@ function setMoonPhase(date = new Date()) {
 
 function updateCurrentMoment(date = undefined) {
     Elements.currentDay.innerHTML = moment(date).format('dddd, MMMM Do');
+}
+
+function updateClock() {
     Elements.currentTime.innerHTML = moment().format('h:mm:ss');
 }
 
@@ -48,7 +51,7 @@ function initialize() {
     Geocoding.setPosition(getTimes);
 
     updateCurrentMoment();
-    setInterval(updateCurrentMoment, 1000);
+    setInterval(updateClock, 1000);
 
     Elements.increaseDay.addEventListener('click', nextDay);
 }

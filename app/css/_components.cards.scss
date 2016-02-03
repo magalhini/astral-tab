@@ -36,6 +36,11 @@
 
     &:hover {
         transform: translateY(-.5em);
+
+        .card__sun {
+            animation-fill-mode: backwards;
+            animation-play-state: running;
+        }
     }
 
     &:hover:after {

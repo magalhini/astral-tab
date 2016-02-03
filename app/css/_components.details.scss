@@ -98,19 +98,3 @@
     letter-spacing: 2px;
     text-transform: uppercase;
 }
-
-.moon-disc {
-    background: transparent;
-    box-shadow: inset -10rem 0 white;
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    position: relative;
-    float: right;
-    transform: rotate(10deg);
-    left: -2em;
-
-    &.wg {
-
-    }
-}
