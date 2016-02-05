@@ -2,14 +2,12 @@
 
 'use strict';
 
-//import $ from './helpers/Bling';
 import Geocoding from './geocoding';
 import SunCalc from 'suncalc';
 import SunCalcHelper from './helpers/SunCalcHelper';
 import TimeFormatter from './helpers/TimeFormatter';
 import moment from 'moment';
 import Elements from './config/Elements';
-import Overlays from './components/overlays';
 import MoonCalc from './helpers/MoonCalc.js';
 
 let rightNow = new Date();   // Today!
@@ -33,8 +31,17 @@ function setHours() {
 
 function setMoonPhase(date = new Date()) {
     let moonphaseValue = SunCalcHelper.getMoonLumen(SunCalc, date).phase;
+    let moonphaseName = MoonCalc.getPhase(moonphaseValue);
 
-    Elements.moonPhaseName.innerHTML = MoonCalc.getPhase(moonphaseValue);
+    Elements.moonPhaseName.innerHTML = moonphaseName;
+
+    let klass = '.moon-icon--' + moonphaseName.split(' ').join('-').toLowerCase();
+    console.log(klass);
+
+    let moonIcon = document.querySelectorAll(klass)[0];
+    console.log(moonIcon)
+    moonIcon.classList.add('is-visible');
+
     Elements.moonPhaseWrapper.classList.add('is-visible');
 }
 
@@ -49,6 +56,8 @@ function updateClock() {
 function initialize() {
     Geocoding.initialize();
     Geocoding.setPosition(getTimes);
+
+    updateClock();
 
     updateCurrentMoment();
     setInterval(updateClock, 1000);

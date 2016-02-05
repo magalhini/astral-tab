@@ -84,13 +84,19 @@
             </div>
 
             <section class="moon-section">
-                <div class="moon-section__col">
-                    <div><svg class="moon-icon moon-icon--full"><use xlink:href="images/svg/moon-defs.svg#icon-full-moon"></use></svg><span class="mls"></span></div>
-                </div>
-                <div class="moon-section__col">
-                    <p id="moon-phase" class="moon-phase"></p>
-                </div>
+                <p id="moon-phase" class="moon-phase"></p>
+                <div class="moon-phase-state">
+                    <svg class="moon-icon moon-icon--last-quarter"><use xlink:href="images/svg/moon-defs.svg#icon-half-moon"></use></svg><span class="mls"></span>
+                    <svg class="moon-icon moon-icon--waning-gibbous"><use xlink:href="images/svg/moon-defs.svg#icon-gibbous-moon"></use></svg><span class="mls"></span>
+                    <svg class="moon-icon moon-icon--waxing-crescent"><use xlink:href="images/svg/moon-defs.svg#icon-gibbous-moon2"></use></svg><span class="mls"></span>
+                    <svg class="moon-icon moon-icon--waxing-gibbous"><use xlink:href="images/svg/moon-defs.svg#icon-gibbous-moon2"></use></svg><span class="mls"></span>
+                    <svg class="moon-icon moon-icon--waning-crescent"><use xlink:href="images/svg/moon-defs.svg#icon-gibbous-moon"></use></svg><span class="mls"></span>
+                    <svg class="moon-icon moon-icon--first-quarter"><use xlink:href="images/svg/moon-defs.svg#icon-gibbous-moon2"></use></svg><span class="mls"></span>
+                    <svg class="moon-icon moon-icon--full"><use xlink:href="images/svg/moon-defs.svg#icon-half-moon2"></use></svg><span class="mls"></span>
+                    <svg class="moon-icon moon-icon--full-moon"><use xlink:href="images/svg/moon-defs.svg#icon-full-moon"></use></svg><span class="mls"></span>
+                    <svg class="moon-icon moon-icon--new-moon"><use xlink:href="images/svg/moon-defs.svg#icon-moon"></use></svg><span class="mls"></span>
 
+                </div>
             </section>
         </section>
     </main>
@@ -132,6 +138,7 @@
     </script>
 
     <script src="https://use.typekit.net/ewt6saw.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
     <script src="typekit.js"></script>
 
     <!-- build:js js/vendor.js -->
