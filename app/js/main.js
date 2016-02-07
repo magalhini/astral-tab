@@ -39,7 +39,6 @@ function setMoonPhase(date = new Date()) {
     console.log(klass);
 
     let moonIcon = document.querySelectorAll(klass)[0];
-    console.log(moonIcon)
     moonIcon.classList.add('is-visible');
 
     Elements.moonPhaseWrapper.classList.add('is-visible');
@@ -53,6 +52,10 @@ function updateClock() {
     Elements.currentTime.innerHTML = moment().format('h:mm:ss');
 }
 
+function toggleMenu() {
+    Elements.aboutSection.classList.toggle('is-open');
+}
+
 function initialize() {
     Geocoding.initialize();
     Geocoding.setPosition(getTimes);
@@ -63,6 +66,10 @@ function initialize() {
     setInterval(updateClock, 1000);
 
     Elements.increaseDay.addEventListener('click', nextDay);
+
+    Array.prototype.forEach.call(Elements.menuTrigger, (item) =>
+        item.addEventListener('click', toggleMenu)
+    );
 }
 
 /**

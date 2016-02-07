@@ -18,5 +18,9 @@ export default {
     duskTimeago: document.querySelector('.cards__card--dusk .card__timeago'),
 
     moonPhaseName: document.getElementById('moon-phase'),
-    moonPhaseWrapper: document.querySelector('.moon-section')
+    moonPhaseWrapper: document.querySelector('.moon-section'),
+
+    menuTrigger: document.querySelectorAll('.menu-trigger'),
+
+    aboutSection: document.querySelectorAll('.section__about')[0]
 };
