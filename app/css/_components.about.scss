@@ -1,0 +1,20 @@
+.section__about {
+    position: fixed;
+    height: 100%;
+    padding: 0 2em;
+    width: 20em;
+    background: #533D59;
+    top: 0;
+    transform: translateX(-20em);
+    z-index: 3;
+    transition: all .45s cubic-bezier(0, .99,.81,.96);
+    box-shadow: 3px 0 15px rgba(0,0,0,.2);
+
+    &.is-open {
+        transform: translateX(0);
+    }
+}
+
+.about__content {
+
+}

@@ -119,6 +119,12 @@
     height: 6.5em;
     margin: 0 auto;
     border-radius: 50%;
+    opacity: 0;
+    transition: opacity .3s cubic-bezier(0, .99,.81,.96);
+
+    .is-ready & {
+        opacity: 1;
+    }
 }
 
 /**

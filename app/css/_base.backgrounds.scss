@@ -24,7 +24,12 @@ body {
         height: 100%;
         position: absolute;
         z-index: 2;
-        opacity: .9;
+        opacity: 0;
+        transition: opacity 1.2s ease-in-out .2s;
+
+        .is-ready & {
+            opacity: .9;
+        }
     }
 }
 
