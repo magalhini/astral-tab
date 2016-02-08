@@ -9,6 +9,7 @@ import TimeFormatter from './helpers/TimeFormatter';
 import moment from 'moment';
 import Elements from './config/Elements';
 import MoonCalc from './helpers/MoonCalc.js';
+import Polyfills from './helpers/polyfills';
 
 let rightNow = new Date();   // Today!
 let computedTimes = null;    // Calculated times based on position
@@ -32,16 +33,17 @@ function setHours() {
 function setMoonPhase(date = new Date()) {
     let moonphaseValue = SunCalcHelper.getMoonLumen(SunCalc, date).phase;
     let moonphaseName = MoonCalc.getPhase(moonphaseValue);
+    let moonIcons = document.querySelectorAll('.moon-icon');
 
-    Elements.moonPhaseName.innerHTML = moonphaseName;
+    Array.prototype.forEach.call(moonIcons, (item) =>
+        item.classList.remove('is-visible'));
 
-    let klass = '.moon-icon--' + moonphaseName.split(' ').join('-').toLowerCase();
-    console.log(klass);
-
+    let klass = `.moon-icon--${moonphaseName.split(' ').join('-').toLowerCase()}`;
     let moonIcon = document.querySelectorAll(klass)[0];
-    moonIcon.classList.add('is-visible');
 
+    moonIcon.classList.add('is-visible');
     Elements.moonPhaseWrapper.classList.add('is-visible');
+    Elements.moonPhaseName.innerHTML = moonphaseName;
 }
 
 function updateCurrentMoment(date = undefined) {
@@ -49,7 +51,7 @@ function updateCurrentMoment(date = undefined) {
 }
 
 function updateClock() {
-    Elements.currentTime.innerHTML = moment().format('h:mm:ss');
+    Elements.currentTime.innerHTML = moment().format('HH:mm:ss');
 }
 
 function toggleMenu() {
@@ -61,8 +63,9 @@ function initialize() {
     Geocoding.setPosition(getTimes);
 
     updateClock();
-
     updateCurrentMoment();
+
+    setInterval(updateCurrentMoment, 60000);
     setInterval(updateClock, 1000);
 
     Elements.increaseDay.addEventListener('click', nextDay);
