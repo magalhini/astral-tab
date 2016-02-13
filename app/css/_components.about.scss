@@ -10,6 +10,14 @@
     transition: all .45s cubic-bezier(0, .99,.81,.96);
     box-shadow: 3px 0 15px rgba(0,0,0,.2);
 
+    @include respond-to("small") {
+        &.is-open {
+            width: 100%;
+            overflow: scroll;
+            padding-bottom: 2em;
+        }
+    }
+
     &.is-open {
         transform: translateX(0);
     }

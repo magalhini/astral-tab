@@ -1,11 +1,39 @@
 .menu {
-    position: absolute;
-    bottom: 2em;
+    position: relative;
+    top: -2em;
     z-index: 3;
+    width: 100%;
+    max-width: $max-content-width;
+    margin: auto;
 }
 
 .menu-trigger {
-    text-decoration: underline;
+    position: static;
+    text-decoration: none;
+    text-transform: uppercase;
     color: #fff;
-    opacity: .5;
+    opacity: .7;
+    letter-spacing: 2px;
+    font-size: .8rem;
+
+    @include respond-to("medium") {
+        background: rgba(0,0,0, .2);
+        position: absolute;
+        padding: .5em;
+        left: -2rem;
+        top: -2em;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+
+    .about__content & {
+        padding: .5em;
+        background: rgba(0,0,0, .2);
+        float: right;
+        position: static;
+        width: 100%;
+        text-align: center;
+    }
 }

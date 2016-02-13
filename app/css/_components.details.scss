@@ -7,7 +7,7 @@
     height: 7em;
     margin-bottom: 3em;
 
-    @media screen and (max-width: 750px) {
+    @include respond-to("medium") {
         text-align: center;
         overflow: visible;
     }
@@ -30,7 +30,7 @@
     font-weight: bold;
     letter-spacing: 1px;
 
-    @media screen and (max-width: 750px) {
+    @include respond-to("medium") {
         font-size: 3rem;
         margin: .5em 0 0;
     }
@@ -45,7 +45,7 @@
     right: 2em;
     margin: 0;
 
-    @media screen and (max-width: 750px) {
+    @include respond-to("medium") {
         position: relative;
         top: 2em;
         opacity: .4;

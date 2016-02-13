@@ -8,6 +8,11 @@
 body, html {
     height: 100%;
     width: 100%;
+    overflow: hidden;
+
+    @include respond-to("medium") {
+        overflow: auto;
+    }
 }
 
 body {
@@ -22,7 +27,6 @@ body {
 #app, .cards {
     z-index: 3;
     position: relative;
-    transform-style: preserve-3d;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,9 +41,14 @@ body {
     padding: 0 5em;
     display: flex;
     flex-direction: column;
+    transition: transform .55s cubic-bezier(0, .99,.81,.96) .1s;
 
     @include respond-to("large") {
         padding: 0 2em;
+    }
+
+    .menu-is-open & {
+        transform: translateX(2em);
     }
 }
 

@@ -4,9 +4,9 @@
 
 import Geocoding from './geocoding';
 import SunCalc from 'suncalc';
+import moment from 'moment';
 import SunCalcHelper from './helpers/SunCalcHelper';
 import TimeFormatter from './helpers/TimeFormatter';
-import moment from 'moment';
 import Elements from './config/Elements';
 import MoonCalc from './helpers/MoonCalc.js';
 import Polyfills from './helpers/polyfills';
@@ -56,6 +56,7 @@ function updateClock() {
 
 function toggleMenu() {
     Elements.aboutSection.classList.toggle('is-open');
+    document.body.classList.toggle('menu-is-open');
 }
 
 function initialize() {
