@@ -9,9 +9,17 @@ var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var autoprefixer = require('autoprefixer');
 var reload = browserSync.reload;
+var uglify = require('gulp-uglify');
+var buffer = require('vinyl-buffer');
 
 var through2 = require('through2');
 var browserify = require('browserify');
+
+gulp.task('compress', function() {
+    return gulp.src('dist/js/**')
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js/'));
+});
 
 gulp.task('stylesheet', function () {
   var processors = [autoprefixer({
@@ -48,13 +56,14 @@ gulp.task('javascript', function () {
         next(null, file);
       });
     }))
+    .pipe(buffer())
+    .pipe(uglify())
     .on('error', function (error) {
       console.log(error.stack);
       this.emit('end');
     })
     .pipe(gulp.dest('dist/js'))
     .pipe($.sourcemaps.init())
-    // .pipe($.uglify())
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/js'));
 });
