@@ -13,6 +13,17 @@ const Geocoding = {
 
     failed(err) {
         console.log(err, 'Failed to get user location');
+        const overlayError = document.querySelectorAll('.overlay')[0];
+        const overlayBtn = document.querySelectorAll('.overlay-btn')[0];
+
+        overlayBtn.addEventListener('click', Geocoding.retry);
+
+        overlayError.style.display = 'flex';
+        setTimeout(() => overlayError.classList.add('is-visible'), 5);
+    },
+
+    retry() {
+        window.location.reload();
     },
 
     getUserDetails(position, callback, error) {

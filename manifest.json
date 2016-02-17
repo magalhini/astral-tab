@@ -1,21 +1,26 @@
 {
   "manifest_version": 2,
 
-  "name": "Astral Tab",
-  "description": "Displays sunrise and sunset times, as well as moon phases.",
+  "name": "Nott Dagr",
+  "description": "Displays sunrise and sunset times and moon phases based on your location. It's also pretty.",
   "version": "1.0",
   "chrome_url_overrides" : {
-    "newtab": "dist/index.html"
+    "newtab": "/dist/index.html"
   },
 
   "background": {
       "scripts": ["background.js"]
   },
 
+  "icons": {
+      "16": "icon.png",
+      "32": "icon@2x.png",
+      "48": "icon@3x.png" },
+
   "content_security_policy": "script-src 'self' https://maps.googleapis.com https://use.typekit.net; object-src 'self'",
 
   "browser_action": {
-   "default_icon": "icon.png"
+   "default_icon": "icon@2x.png"
   },
   "permissions": [
       "geolocation",

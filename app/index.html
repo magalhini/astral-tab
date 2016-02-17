@@ -11,6 +11,7 @@
 
     <!-- build:css css/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/normalize-css/normalize.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -26,10 +27,6 @@
     <main id="app">
         <div class="background">
             <div class="clouds moveClouds"></div>
-        </div>
-
-        <div class="location-overlay" id="location-overlay">
-            <span class="location-overlay__message">Fetching your where abouts...</span>
         </div>
 
         <section class="content">
@@ -117,6 +114,16 @@
         </div>
     </aside>
 
+    <aside class="overlay">
+        <div class="overlay-failed">
+            <div class="overlay-failed__box">
+                <h3>Sorry, couldn't get your location :(</h3>
+                <p>You need to enable location permission for the Gods of Nott and Dagr to find you.</p>
+                <button class="overlay-btn">Try again?</button>
+            </div>
+        </div>
+    </aside>
+
     <!--<section class="time-display">
         <div class="shadow" style="width: 50%; margin: 50% auto; position: absolute;"></div>
         <svg viewBox="0 0 300 300">
@@ -159,6 +166,7 @@
 
     <!-- build:js js/vendor.js -->
     <!-- bower:js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
