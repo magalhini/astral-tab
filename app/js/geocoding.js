@@ -55,6 +55,23 @@ const Geocoding = {
         }).reduce((city) => {
             return city;
         });
+    },
+
+    geocodeAddress(address = 'porto') {
+        console.log(address);
+
+        this.geoCoder.geocode({'address': address}, function(res, status) {
+
+        if (status === google.maps.GeocoderStatus.OK) {
+            console.log(res[0].formatted_address);
+          //resultsMap.setCenter(results[0].geometry.location);
+            //var marker = new google.maps.Marker({
+            //map: resultsMap,
+            //position: results[0].geometry.location
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
     }
 };
 

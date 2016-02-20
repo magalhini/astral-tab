@@ -44,7 +44,7 @@
     top: 4em;
     right: 2em;
     margin: 0;
-
+    
     @include respond-to("medium") {
         position: relative;
         top: 2em;
@@ -55,11 +55,17 @@
 }
 
 .details__icon-map {
+    animation: rotateZ .4s linear infinite 0s;
     fill: white;
     width: 1em;
     position: absolute;
     right: 0;
     top: 0;
+    transition: transform .2s ease-in-out;
+
+    .is-ready & {
+        animation: none;
+    }
 
     @include respond-to("medium") {
         display: none;

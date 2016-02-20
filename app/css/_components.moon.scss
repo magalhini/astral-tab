@@ -38,6 +38,10 @@
     &.is-visible {
         opacity: 1;
     }
+
+    @include respond-to("small") {
+        margin: 2em 0 0;
+    }
 }
 
 .moon-phase {

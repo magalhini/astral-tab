@@ -13,7 +13,7 @@
     @include respond-to("small") {
         &.is-open {
             width: 100%;
-            overflow: scroll;
+            overflow: auto;
             padding-bottom: 2em;
         }
     }
@@ -21,8 +21,4 @@
     &.is-open {
         transform: translateX(0);
     }
-}
-
-.about__content {
-
 }

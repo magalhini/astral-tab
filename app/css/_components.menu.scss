@@ -18,10 +18,10 @@
 
     @include respond-to("medium") {
         background: rgba(0,0,0, .2);
-        position: absolute;
-        padding: .5em;
-        left: -2rem;
-        top: -2em;
+        position: fixed;
+        padding: .75em;
+        left: 0rem;
+        bottom: 0;
     }
 
     &:hover {

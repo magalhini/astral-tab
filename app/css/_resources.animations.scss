@@ -77,9 +77,9 @@
 	visibility: visible !important;
 }
 
-.vanishIn{
+.vanishIn {
 	animation-name: vanishIn;
-	animation-duration: 1s;
+	animation-duration: 2s;
 	animation-timing-function: cubic-bezier(.09,.88,.44,1.07);
 }
 
@@ -96,12 +96,12 @@
 
 @keyframes vanishIn {
 	0% {
-		opacity:0;
-		transform:scale(.8);
+		opacity: .3;
+		transform: scale(.1);
 	}
 
 	100% {
-		opacity:1;
+		opacity: 1;
 		transform: scale(1);
 	}
 }
@@ -127,7 +127,7 @@
 
 @keyframes rotateZ {
 	0% { transform: rotateZ(0deg) scale(1); opacity: .9; }
-	50% { transform: rotateZ(180deg) scale(1.3); opacity: .56; }
+	50% { transform: rotateZ(180deg) scale(1.3); opacity: .6; }
 	100% { transform: rotateZ(360deg) scale(1); opacity: .9; }
 }
 

@@ -12,9 +12,13 @@
     display: inline-block;
     border: none;
     border-radius: 4px;
-    padding: .3rem;
+    padding: .3rem .5rem;
     color: white;
     font-size: 1rem;
+
+    @include respond-to("small") {
+        padding: .3em;
+    }
 
     &.is-disabled {
         opacity: .2;
@@ -40,4 +44,8 @@
     margin: .1em 0 0;
     color: #f7f7f7;
     display: inline-block;
+
+    @include respond-to("small") {
+        font-size: 1em;
+    }
 }
