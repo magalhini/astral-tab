@@ -53,6 +53,7 @@ body {
 
     .menu-is-open & {
         transform: translateX(2em);
+        z-index: 3; // Fix for Firefox
     }
 }
 
