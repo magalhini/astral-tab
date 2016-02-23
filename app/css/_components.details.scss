@@ -44,7 +44,7 @@
     top: 4em;
     right: 2em;
     margin: 0;
-    
+
     @include respond-to("medium") {
         position: relative;
         top: 2em;
@@ -70,4 +70,17 @@
     @include respond-to("medium") {
         display: none;
     }
+}
+
+/**
+ * Search by location component.
+ */
+.find-location {
+    position: absolute;
+    right: 0;
+    z-index: 3;
+}
+
+.find-location__search {
+    color: #333;
 }

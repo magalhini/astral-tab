@@ -1,4 +1,4 @@
-/* jshint devel:true */
+/* jshint devel:true global:document */
 
 'use strict';
 
@@ -9,6 +9,7 @@ import SunCalcHelper from './helpers/SunCalcHelper';
 import TimeFormatter from './helpers/TimeFormatter';
 import Elements from './config/Elements';
 import MoonCalc from './helpers/MoonCalc.js';
+import SearchLocation from './components/searchLocation';
 import Polyfills from './helpers/polyfills';
 
 let rightNow = new Date();   // Today!
@@ -59,21 +60,11 @@ function toggleMenu() {
     document.body.classList.toggle('menu-is-open');
 }
 
-function initialize() {
-    Geocoding.initialize();
-    Geocoding.setPosition(getTimes);
+function searchNewLocation(evt) {
+    let value = evt.target.value;
+    if (evt.keyCode !== 13 || !value) return;
 
-    updateClock();
-    updateCurrentMoment();
-
-    setInterval(updateCurrentMoment, 60000);
-    setInterval(updateClock, 1000);
-
-    Elements.increaseDay.addEventListener('click', nextDay);
-
-    Array.prototype.forEach.call(Elements.menuTrigger, (item) =>
-        item.addEventListener('click', toggleMenu)
-    );
+    SearchLocation.onSubmit(value, getTimes, updateCityName);
 }
 
 /**
@@ -107,16 +98,17 @@ function previousDay(event) {
     getTimes(userPosition);
     updateCurrentMoment(rightNow);
 }
+/**
+ * Write the name of the current location
+ * @city {String}
+ */
+function updateCityName(city) {
+    currentCity = city;
+    Elements.cityName.textContent = city || 'Finding your location...';
+}
 
 function getTimes(position) {
-    if (!position) {
-        return false;
-    }
-
-    const setUserDetails = (city) => {
-        currentCity = city;
-        Elements.cityName.textContent = city || 'Finding your location...';
-    };
+    if (!position) return false;
 
     let { latitude, longitude } = position.coords;
 
@@ -125,11 +117,34 @@ function getTimes(position) {
 
     // Only set the city one time per session.
     // User details are assigned as a callback once the position is found.
-    currentCity = currentCity || Geocoding.getUserDetails(position, setUserDetails);
+    currentCity = currentCity || Geocoding.getUserDetails(position, updateCityName);
     userPosition = position;
 
     setHours();
     setMoonPhase(rightNow);
+}
+
+/**
+ * Kicking things off.
+ */
+function initialize() {
+    Geocoding.initialize();
+    Geocoding.setPosition(getTimes);
+
+    updateClock();
+    updateCurrentMoment();
+
+    setInterval(updateCurrentMoment, 60000);
+    setInterval(updateClock, 1000);
+
+    Elements.increaseDay.addEventListener('click', nextDay);
+    let searchEl = document.getElementById('find-location-input');
+
+    searchEl.addEventListener('keyup', searchNewLocation);
+
+    Array.prototype.forEach.call(Elements.menuTrigger, (item) =>
+        item.addEventListener('click', toggleMenu)
+    );
 }
 
 // Kick this thing up, yo!

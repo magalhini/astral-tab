@@ -12,7 +12,6 @@ const Geocoding = {
     },
 
     failed(err) {
-        console.log(err, 'Failed to get user location');
         const overlayError = document.querySelectorAll('.overlay')[0];
         const overlayBtn = document.querySelectorAll('.overlay-btn')[0];
 
@@ -57,17 +56,23 @@ const Geocoding = {
         });
     },
 
-    geocodeAddress(address = 'porto') {
-        console.log(address);
-
+    geocodeAddress(address, callback, updateCity) {
         this.geoCoder.geocode({'address': address}, function(res, status) {
 
         if (status === google.maps.GeocoderStatus.OK) {
+            const location = res[0];
+            const coordinates = {
+                coords: {
+                    latitude: location.geometry.location.lat(),
+                    longitude: location.geometry.location.lng()
+                }
+            };
+
+            const city = res[0].formatted_address
+            callback(coordinates);
+            updateCity(city)
             console.log(res[0].formatted_address);
-          //resultsMap.setCenter(results[0].geometry.location);
-            //var marker = new google.maps.Marker({
-            //map: resultsMap,
-            //position: results[0].geometry.location
+
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }

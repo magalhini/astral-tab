@@ -2,7 +2,7 @@
 
 import moment from 'moment';
 
-const clockFormat = 'hh:mm';
+const clockFormat = 'HH:mm';
 
 export default {
     formatSunrise: (time) => moment(time.sunrise).format(clockFormat),
