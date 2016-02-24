@@ -1,5 +1,7 @@
 'use strict';
 
+import localStorage from './helpers/LocalStorage';
+
 const Geocoding = {
     initialize() {
         this.geoCoder = new google.maps.Geocoder();
@@ -52,6 +54,7 @@ const Geocoding = {
         }).map((c) => {
             return c.formatted_address;
         }).reduce((city) => {
+            localStorage.set('original-city', city);
             return city;
         });
     },

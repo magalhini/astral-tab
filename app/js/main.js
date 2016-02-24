@@ -11,6 +11,7 @@ import Elements from './config/Elements';
 import MoonCalc from './helpers/MoonCalc.js';
 import SearchLocation from './components/searchLocation';
 import Polyfills from './helpers/polyfills';
+import localStorage from './helpers/LocalStorage';
 
 let rightNow = new Date();   // Today!
 let computedTimes = null;    // Calculated times based on position
@@ -112,6 +113,12 @@ function getTimes(position) {
 
     let { latitude, longitude } = position.coords;
 
+    localStorage.setItem('original-position', {
+        coords: {
+            latitude, longitude
+        }
+    });
+
     // Get the computed times based on the location.
     computedTimes = SunCalc.getTimes(rightNow, latitude, longitude);
 
@@ -129,7 +136,14 @@ function getTimes(position) {
  */
 function initialize() {
     Geocoding.initialize();
-    Geocoding.setPosition(getTimes);
+
+    let previousCoordinates = localStorage.getItem('original-position');
+
+    if (previousCoordinates !== null) {
+        getTimes(previousCoordinates);
+    } else {
+        Geocoding.setPosition(getTimes);
+    }
 
     updateClock();
     updateCurrentMoment();
