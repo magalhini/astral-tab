@@ -108,16 +108,18 @@ function updateCityName(city) {
     Elements.cityName.textContent = city || 'Finding your location...';
 }
 
-function getTimes(position) {
+function getTimes(position, fromCache) {
     if (!position) return false;
 
     let { latitude, longitude } = position.coords;
 
-    localStorage.setItem('original-position', {
-        coords: {
-            latitude, longitude
-        }
-    });
+    if (!fromCache) {
+        localStorage.setItem('original-position', {
+            coords: {
+                latitude, longitude
+            }, date: new Date()
+        });
+    }
 
     // Get the computed times based on the location.
     computedTimes = SunCalc.getTimes(rightNow, latitude, longitude);
@@ -138,9 +140,13 @@ function initialize() {
     Geocoding.initialize();
 
     let previousCoordinates = localStorage.getItem('original-position');
+    let previousLocation = localStorage.getItem('original-city');
 
+    // If there's a recent location saved in storage, let's use that instead
+    // of fetching a new one. Sorry, digital nomads.
     if (previousCoordinates !== null) {
-        getTimes(previousCoordinates);
+        getTimes(previousCoordinates, true);
+        //updateCityName(previousLocation);
     } else {
         Geocoding.setPosition(getTimes);
     }

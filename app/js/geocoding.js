@@ -30,14 +30,25 @@ const Geocoding = {
     getUserDetails(position, callback, error) {
         let {coords} = position;
         let city;
+
+        let previousLocation = localStorage.getItem('original-city');
+
+        if (previousLocation) {
+            city = this.findCity(previousLocation);
+            callback(city);
+            return city;
+        }
+
         let place = new google.maps.LatLng(coords.latitude, coords.longitude);
 
         this.geoCoder.geocode({
             'latLng': place
         }, (res, status) => {
             if (status === google.maps.GeocoderStatus.OK) {
+                console.info('Geocode: Got coordinates');
                 city = this.findCity(res);
                 callback(city);
+                localStorage.setItem('original-city', res);
             } else {
                 callback(error);
             }
@@ -51,10 +62,9 @@ const Geocoding = {
             return o;
         }).filter((a) => {
             return a.types.indexOf('locality') > -1;
-        }).map((c) => {
+        }).map((c) => {;
             return c.formatted_address;
         }).reduce((city) => {
-            localStorage.set('original-city', city);
             return city;
         });
     },
@@ -63,6 +73,7 @@ const Geocoding = {
         this.geoCoder.geocode({'address': address}, function(res, status) {
 
         if (status === google.maps.GeocoderStatus.OK) {
+            console.log('Geocode: from address');
             const location = res[0];
             const coordinates = {
                 coords: {
@@ -71,10 +82,9 @@ const Geocoding = {
                 }
             };
 
-            const city = res[0].formatted_address
+            const city = res[0].formatted_address;
             callback(coordinates);
-            updateCity(city)
-            console.log(res[0].formatted_address);
+            updateCity(city);
 
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
