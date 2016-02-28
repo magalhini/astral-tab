@@ -82,5 +82,36 @@
 }
 
 .find-location__search {
-    color: #333;
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: 5px solid #fff;
+    font-size: 3em;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 5px;
+    padding-bottom: .2em;
+    text-transform: uppercase;
+    transform: translateY(1em);
+    opacity: .4;
+    transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+
+    .is-visible & {
+        opacity: 1;
+        transform: translateY(0em);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.find-location-trigger {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: .7rem;
+    position: absolute;
+    right: 0;
+    top: 6rem;
+    z-index: 5;
 }

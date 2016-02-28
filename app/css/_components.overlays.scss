@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     display: none;
-    transition: opacity .5s ease-in-out;
+    transition: all .5s ease-in-out;
 
     &.is-visible {
         opacity: 1;
@@ -21,6 +21,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.overlay__search-wrapper {
+    align-items: center;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    display: flex;
 }
 
 .overlay-failed__box {

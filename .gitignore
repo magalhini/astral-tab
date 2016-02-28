@@ -7,3 +7,5 @@ test/bower_components
 .DS_Store
 chrome-extension
 chrome-keys
+app/js/NightSky.js
+app/clock.js

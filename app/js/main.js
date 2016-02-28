@@ -12,6 +12,7 @@ import MoonCalc from './helpers/MoonCalc.js';
 import SearchLocation from './components/searchLocation';
 import Polyfills from './helpers/polyfills';
 import localStorage from './helpers/LocalStorage';
+import Overlays from './components/overlays';
 
 let rightNow = new Date();   // Today!
 let computedTimes = null;    // Calculated times based on position
@@ -63,8 +64,9 @@ function toggleMenu() {
 
 function searchNewLocation(evt) {
     let value = evt.target.value;
-    if (evt.keyCode !== 13 || !value) return;
+    if (evt.keyCode !== 13) return; // Only on 'enter' press
 
+    Overlays.close();
     SearchLocation.onSubmit(value, getTimes, updateCityName);
 }
 
@@ -113,7 +115,7 @@ function getTimes(position, fromCache) {
 
     let { latitude, longitude } = position.coords;
 
-    if (!fromCache) {
+    if (fromCache) {} else {
         localStorage.setItem('original-position', {
             coords: {
                 latitude, longitude
@@ -145,8 +147,17 @@ function initialize() {
     // If there's a recent location saved in storage, let's use that instead
     // of fetching a new one. Sorry, digital nomads.
     if (previousCoordinates !== null) {
-        getTimes(previousCoordinates, true);
-        //updateCityName(previousLocation);
+
+        // But if it's older than a day, let's grab a new position
+        let dateSetAt = new Date(previousCoordinates.date);
+        let moreThanADayAgo = moment().diff(dateSetAt, 'minute') >= 1;
+
+        if (moreThanADayAgo) {
+            Geocoding.setPosition(getTimes);
+        } else {
+            // If it's recent, use the cached one instead.
+            getTimes(previousCoordinates, true);
+        }
     } else {
         Geocoding.setPosition(getTimes);
     }
@@ -161,6 +172,9 @@ function initialize() {
     let searchEl = document.getElementById('find-location-input');
 
     searchEl.addEventListener('keyup', searchNewLocation);
+    Elements.searchLocationTrigger.addEventListener('click', SearchLocation.promptSearch);
+
+    document.body.addEventListener('keydown', Overlays.close);
 
     Array.prototype.forEach.call(Elements.menuTrigger, (item) =>
         item.addEventListener('click', toggleMenu)
