@@ -88,13 +88,18 @@
     border-bottom: 5px solid #fff;
     font-size: 3em;
     width: 100%;
-    text-align: center;
+    text-align: left;
     letter-spacing: 5px;
     padding-bottom: .2em;
     text-transform: uppercase;
     transform: translateY(1em);
     opacity: .4;
     transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+
+    &::-webkit-input-placeholder {
+        text-transform: none;
+        letter-spacing: 0;
+    }
 
     .is-visible & {
         opacity: 1;

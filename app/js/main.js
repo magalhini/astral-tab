@@ -150,7 +150,7 @@ function initialize() {
 
         // But if it's older than a day, let's grab a new position
         let dateSetAt = new Date(previousCoordinates.date);
-        let moreThanADayAgo = moment().diff(dateSetAt, 'minute') >= 1;
+        let moreThanADayAgo = moment().diff(dateSetAt, 'days') >= 1;
 
         if (moreThanADayAgo) {
             Geocoding.setPosition(getTimes);
