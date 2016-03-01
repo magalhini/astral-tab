@@ -45,3 +45,21 @@
     border: none;
     border-radius: 4px;
 }
+
+.overlay__close-btn {
+    position: fixed;
+    cursor: pointer;
+    right: 10%;
+    background: transparent;
+    top: 10%;
+    border: none;
+    font-size: 4em;
+    z-index: 3;
+    color: #fff;
+    transform-origin: 50% 50%;
+    transition: transform 1s ease-in-out;
+
+    &:focus {
+        outline: none;
+    }
+}

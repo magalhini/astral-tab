@@ -157,6 +157,8 @@ function initialize() {
         } else {
             // If it's recent, use the cached one instead.
             getTimes(previousCoordinates, true);
+            updateCityName(localStorage.getItem('original-city-name'));
+
         }
     } else {
         Geocoding.setPosition(getTimes);
@@ -175,6 +177,9 @@ function initialize() {
     Elements.searchLocationTrigger.addEventListener('click', SearchLocation.promptSearch);
 
     document.body.addEventListener('keydown', Overlays.close);
+    Elements.overlayCloseButton.addEventListener('click', Overlays.close);
+
+    console.log(Elements.overlayCloseButton);
 
     Array.prototype.forEach.call(Elements.menuTrigger, (item) =>
         item.addEventListener('click', toggleMenu)

@@ -84,6 +84,7 @@ const Geocoding = {
 
             const city = res[0].formatted_address;
             callback(coordinates);
+            localStorage.setItem('original-city-name', city);
             updateCity(city);
 
         } else {

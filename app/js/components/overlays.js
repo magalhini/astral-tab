@@ -8,10 +8,10 @@ const _each = (arr, cb) => {
 };
 
 const Overlays = {
-    close: (event = null) => {
+    close: (event = {}) => {
         let overlays = document.querySelectorAll('.overlay');
 
-        if (event === null || event.keyCode === 27) {
+        if (event && event.keyCode === undefined || event.keyCode === 27 || event.keyCode === 0) {
             _each(overlays, (item) => {
                 item.classList.remove('is-visible');
                 // TODO: Remove timeout and use 'animationEnd' instead

@@ -27,7 +27,7 @@
     font-size: 2.5em;
     display: inline-block;
     margin: 1em 0 0;
-    font-weight: bold;
+    font-weight: 600;
     letter-spacing: 1px;
 
     @include respond-to("medium") {
@@ -48,9 +48,18 @@
     @include respond-to("medium") {
         position: relative;
         top: 2em;
-        opacity: .4;
         clear: both;
         right: 0;
+    }
+
+    @include respond-to("medium") {
+        text-transform: uppercase;
+        max-width: 16em;
+        text-align: center;
+        overflow: hidden;
+        display: inline-block;
+        width: 100%;
+        text-overflow: ellipsis;
     }
 }
 
@@ -119,4 +128,8 @@
     right: 0;
     top: 6rem;
     z-index: 5;
+
+    @include respond-to("small") {
+        display: none;
+    }
 }

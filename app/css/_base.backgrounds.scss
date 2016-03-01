@@ -1,5 +1,8 @@
 body {
-    background: linear-gradient(to right, rgba(221,167,150,1) 0%, rgba(146,134,139,1) 51%, rgba(72,100,128,1) 100%);
+    background: linear-gradient(to right,
+    rgba(221,167,150,1) 0%,
+    rgba(146,134,139,1) 51%,
+    rgba(72,100,128,1) 100%);
 }
 
 .background {
@@ -29,9 +32,11 @@ body {
         transition: opacity 1.6s ease-in-out 0s;
         will-change: transform;
 
-        .is-ready & {
-            opacity: .9;
-            animation: 220s linear 0s infinite rotateZ;
+        @media screen and (min-width: 750px) {
+            .is-ready & {
+                opacity: .9;
+                animation: 220s linear 0s infinite rotateZ;
+            }
         }
     }
 }
@@ -40,7 +45,6 @@ body {
     background-image: url('/images/clouds.png');
     background-size: cover;
     animation: wheel 100s infinite;
-    //background-blend-mode: soft-light;
     opacity: .55;
     width: 100%;
     height: 100%;

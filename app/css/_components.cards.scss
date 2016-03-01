@@ -78,6 +78,7 @@
 .card__hours {
     font-family: $font-stack--secondary;
     font-size: 3em;
+    font-weight: 600;
     -webkit-font-smoothing: subpixel-antialiased;
 }
 
@@ -245,5 +246,20 @@
         clear: both;
         top: -4rem;
         text-align: left;
+    }
+}
+
+@media all and (max-width: 550px) {
+    .card__name {
+        font-size: 1.3em;
+    }
+
+    .card__timeago {
+        top: -3rem;
+    }
+
+    .card__hours {
+        font-size: 2rem;
+        font-weight: 600;
     }
 }

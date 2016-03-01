@@ -41,9 +41,12 @@
                     <button class="controls-button" id="controls__next-day">></button>
                 </section>
 
-                <h4 class="details__current-city">Finding you...</h4>
-                <span id="find-location-trigger" class="find-location-trigger">Change</span>
-                <div class="find-location">
+                <div id="find-location-trigger">
+                    <h4 class="details__current-city">Finding you...</h4>
+                    <span class="find-location-trigger">Change</span>
+                    <div class="find-location">
+                </div>
+
 
                 </div>
                 <span><svg class="details__icon-map"><use xlink:href="images/svg/symbol-defs.svg#icon-map"></use></svg><span class="mls"></span></span></svg></span>
@@ -130,6 +133,7 @@
     </aside>
 
     <aside id="overlay-search" class="overlay overlay">
+        <button class="overlay__close-btn">x</button>
         <div class="overlay__search-wrapper">
             <input id="find-location-input" placeholder="Where?" type="text" class="find-location__search">
         </div>
