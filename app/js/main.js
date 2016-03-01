@@ -1,4 +1,4 @@
-/* jshint devel:true */
+/* jshint devel:true global:document */
 
 'use strict';
 
@@ -9,7 +9,10 @@ import SunCalcHelper from './helpers/SunCalcHelper';
 import TimeFormatter from './helpers/TimeFormatter';
 import Elements from './config/Elements';
 import MoonCalc from './helpers/MoonCalc.js';
+import SearchLocation from './components/searchLocation';
 import Polyfills from './helpers/polyfills';
+import localStorage from './helpers/LocalStorage';
+import Overlays from './components/overlays';
 
 let rightNow = new Date();   // Today!
 let computedTimes = null;    // Calculated times based on position
@@ -59,21 +62,12 @@ function toggleMenu() {
     document.body.classList.toggle('menu-is-open');
 }
 
-function initialize() {
-    Geocoding.initialize();
-    Geocoding.setPosition(getTimes);
+function searchNewLocation(evt) {
+    let value = evt.target.value;
+    if (evt.keyCode !== 13) return; // Only on 'enter' press
 
-    updateClock();
-    updateCurrentMoment();
-
-    setInterval(updateCurrentMoment, 60000);
-    setInterval(updateClock, 1000);
-
-    Elements.increaseDay.addEventListener('click', nextDay);
-
-    Array.prototype.forEach.call(Elements.menuTrigger, (item) =>
-        item.addEventListener('click', toggleMenu)
-    );
+    Overlays.close();
+    SearchLocation.onSubmit(value, getTimes, updateCityName);
 }
 
 /**
@@ -107,29 +101,89 @@ function previousDay(event) {
     getTimes(userPosition);
     updateCurrentMoment(rightNow);
 }
+/**
+ * Write the name of the current location
+ * @city {String}
+ */
+function updateCityName(city) {
+    currentCity = city;
+    Elements.cityName.textContent = city || 'Finding your location...';
+}
 
-function getTimes(position) {
-    if (!position) {
-        return false;
-    }
-
-    const setUserDetails = (city) => {
-        currentCity = city;
-        Elements.cityName.textContent = city || 'Finding your location...';
-    };
+function getTimes(position, fromCache) {
+    if (!position) return false;
 
     let { latitude, longitude } = position.coords;
+
+    if (fromCache) {} else {
+        localStorage.setItem('original-position', {
+            coords: {
+                latitude, longitude
+            }, date: new Date()
+        });
+    }
 
     // Get the computed times based on the location.
     computedTimes = SunCalc.getTimes(rightNow, latitude, longitude);
 
     // Only set the city one time per session.
     // User details are assigned as a callback once the position is found.
-    currentCity = currentCity || Geocoding.getUserDetails(position, setUserDetails);
+    currentCity = currentCity || Geocoding.getUserDetails(position, updateCityName);
     userPosition = position;
 
     setHours();
     setMoonPhase(rightNow);
+}
+
+/**
+ * Kicking things off.
+ */
+function initialize() {
+    Geocoding.initialize();
+
+    let previousCoordinates = localStorage.getItem('original-position');
+    let previousLocation = localStorage.getItem('original-city');
+
+    // If there's a recent location saved in storage, let's use that instead
+    // of fetching a new one. Sorry, digital nomads.
+    if (previousCoordinates !== null) {
+
+        // But if it's older than a day, let's grab a new position
+        let dateSetAt = new Date(previousCoordinates.date);
+        let moreThanADayAgo = moment().diff(dateSetAt, 'days') >= 1;
+
+        if (moreThanADayAgo) {
+            Geocoding.setPosition(getTimes);
+        } else {
+            // If it's recent, use the cached one instead.
+            getTimes(previousCoordinates, true);
+            updateCityName(localStorage.getItem('original-city-name'));
+
+        }
+    } else {
+        Geocoding.setPosition(getTimes);
+    }
+
+    updateClock();
+    updateCurrentMoment();
+
+    setInterval(updateCurrentMoment, 60000);
+    setInterval(updateClock, 1000);
+
+    Elements.increaseDay.addEventListener('click', nextDay);
+    let searchEl = document.getElementById('find-location-input');
+
+    searchEl.addEventListener('keyup', searchNewLocation);
+    Elements.searchLocationTrigger.addEventListener('click', SearchLocation.promptSearch);
+
+    document.body.addEventListener('keydown', Overlays.close);
+    Elements.overlayCloseButton.addEventListener('click', Overlays.close);
+
+    console.log(Elements.overlayCloseButton);
+
+    Array.prototype.forEach.call(Elements.menuTrigger, (item) =>
+        item.addEventListener('click', toggleMenu)
+    );
 }
 
 // Kick this thing up, yo!

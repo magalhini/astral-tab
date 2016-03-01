@@ -21,6 +21,9 @@ export default {
     moonPhaseWrapper: document.querySelector('.moon-section'),
 
     menuTrigger: document.querySelectorAll('.menu-trigger'),
+    searchLocationTrigger: document.getElementById('find-location-trigger'),
+
+    overlayCloseButton: document.querySelectorAll('.overlay__close-btn')[0],
 
     aboutSection: document.querySelectorAll('.section__about')[0]
 };

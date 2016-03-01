@@ -51,6 +51,10 @@ body {
         padding: 0 2em;
     }
 
+    @include respond-to("small") {
+        padding: 0 1em;
+    }
+
     .menu-is-open & {
         transform: translateX(2em);
         z-index: 3; // Fix for Firefox

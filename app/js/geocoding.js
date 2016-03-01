@@ -1,5 +1,7 @@
 'use strict';
 
+import localStorage from './helpers/LocalStorage';
+
 const Geocoding = {
     initialize() {
         this.geoCoder = new google.maps.Geocoder();
@@ -12,7 +14,6 @@ const Geocoding = {
     },
 
     failed(err) {
-        console.log(err, 'Failed to get user location');
         const overlayError = document.querySelectorAll('.overlay')[0];
         const overlayBtn = document.querySelectorAll('.overlay-btn')[0];
 
@@ -29,14 +30,25 @@ const Geocoding = {
     getUserDetails(position, callback, error) {
         let {coords} = position;
         let city;
+
+        let previousLocation = localStorage.getItem('original-city');
+
+        if (previousLocation) {
+            city = this.findCity(previousLocation);
+            callback(city);
+            return city;
+        }
+
         let place = new google.maps.LatLng(coords.latitude, coords.longitude);
 
         this.geoCoder.geocode({
             'latLng': place
         }, (res, status) => {
             if (status === google.maps.GeocoderStatus.OK) {
+                console.info('Geocode: Got coordinates');
                 city = this.findCity(res);
                 callback(city);
+                localStorage.setItem('original-city', res);
             } else {
                 callback(error);
             }
@@ -50,24 +62,31 @@ const Geocoding = {
             return o;
         }).filter((a) => {
             return a.types.indexOf('locality') > -1;
-        }).map((c) => {
+        }).map((c) => {;
             return c.formatted_address;
         }).reduce((city) => {
             return city;
         });
     },
 
-    geocodeAddress(address = 'porto') {
-        console.log(address);
-
+    geocodeAddress(address, callback, updateCity) {
         this.geoCoder.geocode({'address': address}, function(res, status) {
 
         if (status === google.maps.GeocoderStatus.OK) {
-            console.log(res[0].formatted_address);
-          //resultsMap.setCenter(results[0].geometry.location);
-            //var marker = new google.maps.Marker({
-            //map: resultsMap,
-            //position: results[0].geometry.location
+            console.log('Geocode: from address');
+            const location = res[0];
+            const coordinates = {
+                coords: {
+                    latitude: location.geometry.location.lat(),
+                    longitude: location.geometry.location.lng()
+                }
+            };
+
+            const city = res[0].formatted_address;
+            callback(coordinates);
+            localStorage.setItem('original-city-name', city);
+            updateCity(city);
+
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }

@@ -27,7 +27,7 @@
     font-size: 2.5em;
     display: inline-block;
     margin: 1em 0 0;
-    font-weight: bold;
+    font-weight: 600;
     letter-spacing: 1px;
 
     @include respond-to("medium") {
@@ -44,13 +44,22 @@
     top: 4em;
     right: 2em;
     margin: 0;
-    
+
     @include respond-to("medium") {
         position: relative;
         top: 2em;
-        opacity: .4;
         clear: both;
         right: 0;
+    }
+
+    @include respond-to("medium") {
+        text-transform: uppercase;
+        max-width: 16em;
+        text-align: center;
+        overflow: hidden;
+        display: inline-block;
+        width: 100%;
+        text-overflow: ellipsis;
     }
 }
 
@@ -68,6 +77,59 @@
     }
 
     @include respond-to("medium") {
+        display: none;
+    }
+}
+
+/**
+ * Search by location component.
+ */
+.find-location {
+    position: absolute;
+    right: 0;
+    z-index: 3;
+}
+
+.find-location__search {
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: 5px solid #fff;
+    font-size: 3em;
+    width: 100%;
+    text-align: left;
+    letter-spacing: 5px;
+    padding-bottom: .2em;
+    text-transform: uppercase;
+    transform: translateY(1em);
+    opacity: .4;
+    transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+
+    &::-webkit-input-placeholder {
+        text-transform: none;
+        letter-spacing: 0;
+    }
+
+    .is-visible & {
+        opacity: 1;
+        transform: translateY(0em);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.find-location-trigger {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: .7rem;
+    position: absolute;
+    right: 0;
+    top: 6rem;
+    z-index: 5;
+
+    @include respond-to("small") {
         display: none;
     }
 }

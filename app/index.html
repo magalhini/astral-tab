@@ -41,7 +41,14 @@
                     <button class="controls-button" id="controls__next-day">></button>
                 </section>
 
-                <h4 class="details__current-city">Finding you...</h4>
+                <div id="find-location-trigger">
+                    <h4 class="details__current-city">Finding you...</h4>
+                    <span class="find-location-trigger">Change</span>
+                    <div class="find-location">
+                </div>
+
+
+                </div>
                 <span><svg class="details__icon-map"><use xlink:href="images/svg/symbol-defs.svg#icon-map"></use></svg><span class="mls"></span></span></svg></span>
             </section>
 
@@ -125,6 +132,13 @@
         </div>
     </aside>
 
+    <aside id="overlay-search" class="overlay overlay">
+        <button class="overlay__close-btn">x</button>
+        <div class="overlay__search-wrapper">
+            <input id="find-location-input" placeholder="Where?" type="text" class="find-location__search">
+        </div>
+    </aside>
+
     <!--<section class="time-display">
         <div class="shadow" style="width: 50%; margin: 50% auto; position: absolute;"></div>
         <svg viewBox="0 0 300 300">
@@ -151,7 +165,6 @@
 
     <script src="vendor/svgxuse.js"></script>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -168,9 +181,7 @@
     <script src="typekit.js"></script>
 
     <!-- build:js js/vendor.js -->
-    <!-- bower:js -->
-    <script src="/bower_components/modernizr/modernizr.js"></script>
-    <!-- endbower -->
+
     <!-- endbuild -->
 
     <!-- build:js js/main.js -->
